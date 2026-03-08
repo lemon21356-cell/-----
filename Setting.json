@@ -1,6 +1,17 @@
 {
-  "name": "entry-fhd-checker",
-  "title": "FHD 확인 확장",
-  "description": "Entry FHD 확장프로그램이 켜져있는지 확인합니다",
-  "main": "extension.js"
+  "name": "Entry FHD Checker",
+  "description": "엔트리에 더 많은 확장된 블록을 사용해 보세요!",
+  "version": "1.0",
+  "manifest_version": 3,
+
+  "icons": {
+    "128": "icon.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://playentry.org/*"],
+      "js": ["extension.js"]
+    }
+  ]
 }
