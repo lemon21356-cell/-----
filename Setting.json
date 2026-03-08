@@ -1,0 +1,6 @@
+{
+  "name": "entry-fhd-checker",
+  "title": "FHD 확인 확장",
+  "description": "Entry FHD 확장프로그램이 켜져있는지 확인합니다",
+  "main": "extension.js"
+}
