@@ -2,46 +2,46 @@
 
 'use strict';
 
-Entry.FHDChecker = {
-    name: 'FHDChecker',
-    title: 'FHD 확인',
+function waitForEntry() {
 
-    blocks: [
-        {
-            opcode: 'checkFHD',
-            blockType: 'boolean',
-            text: 'Entry FHD 확장프로그램이 켜져있는가?'
-        }
-    ],
-
-    checkFHD() {
-
-        // Entry FHD 확장 확인
-        if (window.EntryFHD) {
-            return true;
-        }
-
-        if (window.entryFHD) {
-            return true;
-        }
-
-        if (window.fhd) {
-            return true;
-        }
-
-        return false;
+    if (!window.Entry) {
+        setTimeout(waitForEntry, 500);
+        return;
     }
-};
 
-// 블록 등록
-Entry.block.fhdBlocks = [
-    'checkFHD'
-];
+    Entry.FHDChecker = {
+        name: 'FHDChecker',
+        title: 'FHD 확인',
 
-// 분류 설정 (검정색)
-Entry.block.fhdChecker = {
-    color: '#000000',
-    blocks: Entry.block.fhdBlocks
-};
+        blocks: [
+            {
+                opcode: 'checkFHD',
+                blockType: 'boolean',
+                text: 'Entry FHD 확장프로그램이 켜져있는가?'
+            }
+        ],
+
+        checkFHD() {
+
+            if (window.EntryFHD) return true;
+            if (window.entryFHD) return true;
+            if (window.fhd) return true;
+
+            return false;
+        }
+    };
+
+    Entry.block.fhdCheckerBlocks = [
+        'checkFHD'
+    ];
+
+    Entry.block.fhdChecker = {
+        color: '#000000',
+        blocks: Entry.block.fhdCheckerBlocks
+    };
+
+}
+
+waitForEntry();
 
 })();
